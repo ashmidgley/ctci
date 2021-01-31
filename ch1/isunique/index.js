@@ -1,4 +1,4 @@
-const index = {};
+let index = {};
 
 index.allUnique = (input) => {
     let set = new Set();

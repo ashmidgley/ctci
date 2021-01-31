@@ -20,3 +20,9 @@ func TestAllUnique(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkAllUnique(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		allUnique("abcdefg")
+	}
+}
