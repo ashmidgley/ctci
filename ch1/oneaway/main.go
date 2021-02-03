@@ -1,62 +1,49 @@
 package main
 
-import (
-	"sort"
-	"strings"
-)
-
 func isOneEditAway(a, b string) bool {
 	aLen := len(a)
 	bLen := len(b)
-	if aLen != bLen && aLen+1 != bLen && aLen != bLen+1 {
-		return false
-	}
 
-	if aLen > bLen {
-		//Remove
-		return offByOne(b, a)
+	if aLen+1 == bLen {
+		// Insertion.
+		return isInsertion(a, b)
 	}
-	if aLen < bLen {
-		// Insert
-		return offByOne(a, b)
+	if aLen == bLen+1 {
+		// Removal.
+		return isInsertion(b, a)
 	}
+	if aLen == bLen {
+		// Replacement.
+		return isReplacement(a, b)
+	}
+	return false
+}
 
-	// Replace
-	replacementHit := false
-	for i := 0; i < len(a); i++ {
-		if a[i] != b[i] {
-			if !replacementHit {
-				replacementHit = true
-			} else {
+func isInsertion(a, b string) bool {
+	extraHit := false
+	for i, j := 0, 0; i < len(a) && j < len(b); {
+		if a[i] != b[j] {
+			if extraHit {
 				return false
 			}
+			extraHit = true
+			j++
+		} else {
+			i++
+			j++
 		}
 	}
 	return true
 }
 
-func sortString(s string) string {
-	split := strings.Split(s, "")
-	sort.Strings(split)
-	return strings.Join(split, "")
-}
-
-func offByOne(a, b string) bool {
-	a = sortString(a)
-	b = sortString(b)
-
-	extraHit := false
-	for i, j := 0, 0; i < len(a) && j < len(b); {
-		if a[i] != b[j] {
-			if !extraHit {
-				extraHit = true
-				j++
-			} else {
+func isReplacement(a, b string) bool {
+	replacementHit := false
+	for i := 0; i < len(a); i++ {
+		if a[i] != b[i] {
+			if replacementHit {
 				return false
 			}
-		} else {
-			i++
-			j++
+			replacementHit = true
 		}
 	}
 	return true

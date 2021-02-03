@@ -11,21 +11,13 @@ func isPermutation(s string) bool {
 		occurrences[r]++
 	}
 
-	if len(s)%2 == 0 {
-		for _, val := range occurrences {
-			if val != 2 {
+	singleOddHit := false
+	for _, val := range occurrences {
+		if val != 2 {
+			if !singleOddHit {
+				singleOddHit = true
+			} else {
 				return false
-			}
-		}
-	} else {
-		singleOddHit := false
-		for _, val := range occurrences {
-			if val != 2 {
-				if !singleOddHit {
-					singleOddHit = true
-				} else {
-					return false
-				}
 			}
 		}
 	}

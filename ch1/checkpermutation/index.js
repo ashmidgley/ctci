@@ -4,15 +4,11 @@ index.isPermutation = (a, b) => {
     if(a.length != b.length) {
         return false;
     }
+    return sortString(a) === sortString(b);
+}
 
-    sa = a.split("").sort().join("");
-    sb = b.split("").sort().join("");
-    for(var i = 0; i < a.length; i++) {
-        if(sa[i] != sb[i]) {
-            return false;
-        }
-    }
-    return true;
+const sortString = (s) => {
+    return s.split("").sort().join("");
 }
 
 module.exports = index;

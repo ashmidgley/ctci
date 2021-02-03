@@ -15,13 +15,5 @@ func isPermutation(a string, b string) bool {
 	if len(a) != len(b) {
 		return false
 	}
-
-	sa := sortString(a)
-	sb := sortString(b)
-	for i := 0; i < len(a); i++ {
-		if sa[i] != sb[i] {
-			return false
-		}
-	}
-	return true
+	return sortString(a) == sortString(b)
 }
