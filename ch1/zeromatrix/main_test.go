@@ -30,9 +30,3 @@ func TestSetZeroes(t *testing.T) {
 		}
 	}
 }
-
-func BenchmarkSetZeroes(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		setZeroes([][]int{{1, 0, 1}, {1, 1, 1}, {1, 1, 1}})
-	}
-}

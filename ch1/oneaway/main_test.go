@@ -23,9 +23,3 @@ func TestIsOneEditAway(t *testing.T) {
 		}
 	}
 }
-
-func BenchmarkIsOneEditAway(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		isOneEditAway("pale", "ple")
-	}
-}

@@ -21,9 +21,3 @@ func TestUrlify(t *testing.T) {
 		}
 	}
 }
-
-func BenchmarkUrlify(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		urlify("Mr John Smith    ", 13)
-	}
-}

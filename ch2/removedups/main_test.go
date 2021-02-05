@@ -28,10 +28,10 @@ func TestRemoveDupes(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			result := removeDupes(c.in)
+			removeDupes(c.in)
 
 			index := 0
-			current := result.Head
+			current := c.in.Head
 			for current != nil {
 				if current.Value != c.want[index] {
 					t.Fatalf("value at head == %d; want %d", current.Value, c.want[index])

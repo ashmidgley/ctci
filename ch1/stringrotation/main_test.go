@@ -21,9 +21,3 @@ func TestIsRotation(t *testing.T) {
 		}
 	}
 }
-
-func BenchmarkIsRotation(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		isRotation("waterbottle", "erbottlewat")
-	}
-}
