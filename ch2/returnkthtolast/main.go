@@ -3,6 +3,10 @@ package main
 import "github.com/ashmidgley/ctci/ch2/linkedlist"
 
 func kthToLast(l *linkedlist.List, k int) *linkedlist.Node {
+	if l == nil {
+		return nil
+	}
+
 	count := 0
 	current := l.Head
 	for current != nil {

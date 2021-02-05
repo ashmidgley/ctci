@@ -2,8 +2,8 @@ package main
 
 import "github.com/ashmidgley/ctci/ch2/linkedlist"
 
-func removeDupes(l linkedlist.List) {
-	if l.Head == nil {
+func removeDupes(l *linkedlist.List) {
+	if l == nil || l.Head == nil {
 		return
 	}
 

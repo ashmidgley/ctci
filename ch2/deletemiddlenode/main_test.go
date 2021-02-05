@@ -7,7 +7,7 @@ import (
 )
 
 func TestDeleteMiddle(t *testing.T) {
-	l := linkedlist.List{}
+	l := &linkedlist.List{}
 	l.Append(1)
 	l.Append(2)
 	l.Append(3)

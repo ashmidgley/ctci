@@ -7,7 +7,7 @@ import (
 )
 
 func TestPartition(t *testing.T) {
-	l := linkedlist.List{}
+	l := &linkedlist.List{}
 	l.Append(3)
 	l.Append(5)
 	l.Append(8)

@@ -7,19 +7,19 @@ import (
 )
 
 func TestRemoveDupes(t *testing.T) {
-	l1 := linkedlist.List{}
+	l1 := &linkedlist.List{}
 	l1.Append(1)
 	l1.Append(2)
 	l1.Append(3)
 
-	l2 := linkedlist.List{}
+	l2 := &linkedlist.List{}
 	l2.Append(1)
 	l2.Append(1)
 	l2.Append(1)
 
 	cases := []struct {
 		name string
-		in   linkedlist.List
+		in   *linkedlist.List
 		want []int
 	}{
 		{"no dupes", l1, []int{1, 2, 3}},
