@@ -42,3 +42,40 @@ func sumLists(l1 *linkedlist.List, l2 *linkedlist.List) *linkedlist.List {
 
 	return result
 }
+
+func sumForwardLists(l1 *linkedlist.List, l2 *linkedlist.List) *linkedlist.List {
+	var result []int
+	current1 := l1.Head
+	current2 := l2.Head
+	for current1 != nil || current2 != nil {
+		if current1 == nil {
+			result = append(result, current2.Value)
+			current2 = current2.Next
+		} else if current2 == nil {
+			result = append(result, current1.Value)
+			current1 = current1.Next
+		} else {
+			carry := (current1.Value + current2.Value) / 10
+			sum := (current1.Value + current2.Value) % 10
+
+			if carry == 1 {
+				length := len(result)
+				if length > 0 {
+					result[length-1] += carry
+				} else {
+					result = append(result, carry)
+				}
+			}
+
+			result = append(result, sum)
+			current1 = current1.Next
+			current2 = current2.Next
+		}
+	}
+
+	l := &linkedlist.List{}
+	for _, val := range result {
+		l.Append(val)
+	}
+	return l
+}
